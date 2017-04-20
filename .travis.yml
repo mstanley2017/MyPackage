@@ -1,0 +1,7 @@
+# R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
+# Part of the MyPackage cretaed
+
+language: R
+sudo: false
+cache: packages
+warnings_are_errors: false
