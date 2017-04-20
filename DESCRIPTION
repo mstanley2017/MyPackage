@@ -1,0 +1,12 @@
+Package: MyPackage
+Type: Package
+Title: Year-wise fatality summaries
+Version: 0.1.0
+Authors@R: person("Michelle", "Stanley", email = "mstanley81@gmail.com", role = c("aut", "cre"))
+Description: "This package helps display year-wise fatality summaries"
+License: GPL-2
+LazyData: TRUE
+Suggests: knitr,
+    rmarkdown
+VignetteBuilder: knitr
+RoxygenNote: 6.0.1

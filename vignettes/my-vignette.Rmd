@@ -1,0 +1,36 @@
+---
+title: "Week 4 Assignment"
+author: "Michelle Stanley"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+This package will help displaying the year-wise fatality summaries and representing them visually in the form of maps by state
+
+The dataset used data from the US National Highway Traffic Safety Administration's Fatality Analysis Reporting System, which is a nationwide census providing the American public yearly data regarding fatal injuries suffered in motor vehicle traffic crashes
+
+The package contains 5 functions, each having a different functionality
+
+#### Function 1: fars_read
+
+The function fars_read is used to evaluate the existence of a file and read in the information into a data frame if the file exists. The function validates if the file exists and accordingly displays a message if it does not. All messages pertaining to the progress of the reading in of the csv file is suppressed. A dataframe is created to save the input that is read in if the file exists. 
+
+#### Function 2: make_filename
+
+ The make_filename function is used to create a filename using the year as an input and concatenating the text "accident",the year that was inputted and the extensions ".csv.bz2". The file name is then printed
+ 
+#### Function 3: fars_read_years
+
+The function fars_read_years is used to take the year as an input and create a filename using make_filename function. The file is then read using the fars_read function. To which a column called year is added using the mutate function. To use the mutate function the dplyr package needs to be installed. The data is then subset by month and year using the dplyr::select function. The Trycatch provides a mechanism for handling unusual conditions. If an error is generated, the error handler picks up the error generated and displays a warning message "invalid year: " with the invalid year information. If no error is generated, it displays "NULL". The entire function of creating the files, reading in the details, adding a year column, subsetting the information is applied to all elements of the list and returns a list using the lapply function
+ 
+#### Function 4: fars_summarize_years
+
+The fars_summarize_years function takes a year as an input and summarizes the number of accidents by month within the input year specified. The output is a table displaying a month number and the consolidated number of fatal injuries for each month of the specified year
+
+#### Function 5: fars_map_state
+
+The fars_map_state function takes the state number and year as an input and displays a plot of the state with the number of fatalities mapped as dots at the appropriate location of the incident. To be able to use this function ensure the maps package is installed. The input to this function is the state number and the year. The data for the state is filtered and the number of rows is determined. Each fatal injury incident is plotted as dot within the map at their corresponding latitude and longitude
